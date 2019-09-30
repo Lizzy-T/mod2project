@@ -1,10 +1,49 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+/* color palette: 
+rgb(52, 68, 81)
+rgb(59, 65, 59)
+rgb(216, 203, 176)
+rgb(93, 118, 123)
+rgb(145, 189, 214)
 
+ */
 body {
     font-family: 'Raleway';
 }
 
-h1 {
+header {
     display: flex;
     justify-content: center;
+    background-image: url("glacierHike.jpg"); 
+    background-repeat: no-repeat;
+    background-size: 100%, 10rem;
+    height: 10rem;
+    margin-bottom: 1rem;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    background: rgb(52, 68, 81);
+    color: rgb(216, 203, 176);
+}
+
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 1rem;
+}
+
+.sign-up {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
+form{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 5rem;
 }
