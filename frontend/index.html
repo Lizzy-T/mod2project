@@ -12,11 +12,10 @@
     <header>
         <h1>Welcome to Trails!</h1>
     </header>
-    <section class='sign-up'>
-        <form method="POST" action="http://localhost:3000/users">
-            <label for="username">Sign up here!</label>
-            <input id="username" name="username" placeholder="username" type='text'>
-            <input type='submit'>
+    <section class='log-in'>
+        <form id='user'>
+            <input type="radio" name="user" value="returning" >Returning User<br>
+            <input type="radio" name="user" value="new-user">New User<br>
         </form>
     </section>
     <div class="card-container">
