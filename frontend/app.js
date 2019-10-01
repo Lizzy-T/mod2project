@@ -1,22 +1,10 @@
 let all_users = []
-
-fetch("http://localhost:3000/users")
-    .then(response => response.json())
-    .then(response => all_users = response)
-
 let all_hikes = []
-
-fetch("http://localhost:3000/reihikes")
-    .then(response => response.json())
-    .then(response => all_hikes = response)
-    .then(displayHikes)
-    .then(logIn)
-    .then(starFavorite)
-
-
+let selectedUser = []
 
 function displayHikes() {
     const cardContainter = document.querySelector('.card-container')
+
     all_hikes.forEach(hike => {
         let card = document.createElement('div')
         card.className = 'card'
@@ -37,12 +25,14 @@ function logIn() {
 
 function userOptions (e) {
     let choice = e.target.value
+
     if (choice == "returning") {
-        destroyLogin()
+        destroyLogin('div')
         existingUser()
         currentUser()
     } else if (choice == "new-user") {
-        destroyLogin()
+        destroyLogin('div')
+        destroyLogin('section')
         newUser()
     }
 }
@@ -63,6 +53,7 @@ function newUser() {
 function existingUser(){
     const logIn = document.querySelector('.log-in')
     let viewUsers = document.createElement('div')
+
     viewUsers.innerHTML =`
         <label for="username">Select your username!</label>
         <select id="username" name="username" placeholder="username" >
@@ -70,7 +61,9 @@ function existingUser(){
         </select>
     `
     logIn.append(viewUsers)
+
     let option = document.getElementById('username')
+
     all_users.forEach(user =>{ 
         let userSelect = document.createElement('option')
         userSelect.value = user.username
@@ -79,8 +72,8 @@ function existingUser(){
     })
 }
 
-function destroyLogin(){
-    let logInOption = document.querySelectorAll('.log-in > div')
+function destroyLogin(element){
+    let logInOption = document.querySelectorAll(`.log-in > ${element}`)
     logInOption.length > 0 ? logInOption.forEach(option => {option.remove()}) :  "nope"
 }
 
@@ -89,15 +82,32 @@ function currentUser() {
     userSelect.addEventListener("change", selectUserName)
 }
 
-let selectedUser = []
+function displayCurrentUser() {
+    const logIn = document.querySelector('.log-in')
+    const section = document.createElement('section')
+    let userLink = document.createElement('a')
+    const currentUser = document.createElement('h3')
+
+    currentUser.innerText = "Current User:"
+
+    userLink.href = `new.html?id=${selectedUser[0]["id"]}`
+    userLink.innerText = `${selectedUser[0]["username"]}`
+
+    section.append(currentUser, userLink)
+    logIn.append(section)
+}
 
 function selectUserName(e){
     let userName = e.target.value
     selectedUser = all_users.filter(user=> user.username === userName)
+
+    destroyLogin('section')
+    displayCurrentUser()
 }
 
 function starFavorite() {
     let all_stars = document.querySelectorAll('.card > i')
+
     all_stars.forEach(star =>{
         star.addEventListener("click", addToFavorites)
     })
@@ -105,7 +115,9 @@ function starFavorite() {
 
 function addToFavorites(e){
     let hikeName = e.currentTarget.parentElement.firstElementChild.innerText
+
     currentHikeObj = all_hikes.filter(hike => hike.name === hikeName)
+    
     createFavoritePost(selectedUser, currentHikeObj)
 }
 
@@ -121,3 +133,14 @@ function createFavoritePost(user, hike){
         }
     })
 }
+
+fetch("http://localhost:3000/users")
+    .then(response => response.json())
+    .then(response => all_users = response)
+
+fetch("http://localhost:3000/reihikes")
+    .then(response => response.json())
+    .then(response => all_hikes = response)
+    .then(displayHikes)
+    .then(logIn)
+    .then(starFavorite)

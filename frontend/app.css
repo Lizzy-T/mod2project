@@ -47,7 +47,16 @@ header {
     align-self: right;
     order: -1;
     padding-bottom: 1rem;
-    color: yellow;
+    color: hsla(57, 100%, 50%, 1);
+    cursor: pointer;
+}
+
+.card i:hover {
+    color: hsl(57, 100%, 37%, 1)
+}
+
+.card i:active {
+    color: rgb(145, 189, 214);
 }
 
 .card-container{
