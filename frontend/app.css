@@ -26,6 +26,12 @@ header {
     justify-content: center;
     background: rgb(52, 68, 81);
     color: rgb(216, 203, 176);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.card i {
+    align-self: right;
 }
 
 .card-container{
@@ -36,9 +42,11 @@ header {
 
 .log-in {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
     padding-bottom: 1rem;
 }
+
 
 
 form .old-user{
