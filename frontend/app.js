@@ -11,6 +11,7 @@ fetch("http://localhost:3000/reihikes")
     .then(response => all_hikes = response)
     .then(displayHikes)
     .then(logIn)
+    .then(starFavorite)
 
 fetch("http://localhost:3000/favorites")
     .then(response => response.json())
@@ -23,6 +24,7 @@ function displayHikes() {
         card.className = 'card'
         card.innerHTML = `
             <h3>${hike.name}</h3>
+            <i class="fa fa-star"></i>
         `
         cardContainter.appendChild(card)
     })
@@ -80,4 +82,16 @@ function existingUser(){
 function destroyLogin(){
     let logInOption = document.querySelectorAll('.log-in > div')
     logInOption.length > 0 ? logInOption.forEach(option => {option.remove()}) :  "nope"
+}
+
+function starFavorite() {
+    let all_stars = document.querySelectorAll('.card > i')
+    all_stars.forEach(star =>{
+        star.addEventListener("click", addToFavorites)
+        console.log(star)
+    })
+}
+
+function addToFavorites(e){
+    debugger
 }

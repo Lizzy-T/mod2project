@@ -8,6 +8,8 @@ rei_url = "https://www.hikingproject.com/data/get-trails?lat=39.7392&lon=-104.99
 info = RestClient.get(rei_url)
 all_trails = JSON.parse(info.body)["trails"]
 
+binding.pry
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
