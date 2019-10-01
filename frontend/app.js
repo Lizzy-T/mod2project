@@ -41,6 +41,7 @@ function userOptions (e) {
     if (choice == "returning") {
         destroyLogin()
         existingUser()
+        currentUser()
     } else if (choice == "new-user") {
         destroyLogin()
         newUser()
@@ -84,14 +85,43 @@ function destroyLogin(){
     logInOption.length > 0 ? logInOption.forEach(option => {option.remove()}) :  "nope"
 }
 
+function currentUser() {
+    let userSelect = document.querySelector('#username')
+    userSelect.addEventListener("change", selectUserName)
+}
+
+let selectedUser = []
+
+function selectUserName(e){
+    let userName = e.target.value
+    selectedUser = all_users.filter(user=> user.username === userName)
+}
+
 function starFavorite() {
     let all_stars = document.querySelectorAll('.card > i')
     all_stars.forEach(star =>{
         star.addEventListener("click", addToFavorites)
-        console.log(star)
     })
 }
 
 function addToFavorites(e){
-    debugger
+    let hikeName = e.currentTarget.parentElement.firstElementChild.innerText
+    currentHikeObj = all_hikes.filter(hike => hike.name === hikeName)
+    createFavoritePost(selectedUser, currentHikeObj)
+}
+
+function createFavoritePost(user, hike){
+    console.log(user)
+    console.log(hike)
+    const postRequest = new XMLHttpRequest()
+    postRequest.addEventListener("load", reqListener)
+    postRequest.open("POST", "http://localhost:3000/favorites")
+    postRequest.send(JSON.stringify({
+        user: user,
+        reihike: hike
+    }))
+}
+
+function reqListener () {
+    console.log(this.responseText)
 }
