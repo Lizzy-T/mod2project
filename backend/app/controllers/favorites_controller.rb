@@ -10,4 +10,11 @@ class FavoritesController < ApplicationController
 
     render json: @favorite
   end
+
+  def create
+    @favorite = Favorite.create({
+      user: params[:user],
+      reihike: params[:reihike]
+    })
+  end
 end
