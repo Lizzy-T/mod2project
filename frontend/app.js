@@ -57,7 +57,7 @@ function existingUser(){
     viewUsers.innerHTML =`
         <label for="username">Select your username!</label>
         <select id="username" name="username" placeholder="username" >
-
+            <option value="">Select</option>
         </select>
     `
     logIn.append(viewUsers)
@@ -90,7 +90,7 @@ function displayCurrentUser() {
 
     currentUser.innerText = "Current User:"
 
-    userLink.href = `new.html?id=${selectedUser[0]["id"]}`
+    userLink.href = `profile.html?id=${selectedUser[0]["id"]}`
     userLink.innerText = `${selectedUser[0]["username"]}`
 
     section.append(currentUser, userLink)
@@ -117,7 +117,7 @@ function addToFavorites(e){
     let hikeName = e.currentTarget.parentElement.firstElementChild.innerText
 
     currentHikeObj = all_hikes.filter(hike => hike.name === hikeName)
-    
+
     createFavoritePost(selectedUser, currentHikeObj)
 }
 
