@@ -1,6 +1,8 @@
 let all_users = []
 let all_hikes = []
 let selectedUser = []
+let initialView = document.querySelector('input[value=returning]')
+initialView.focus()
 
 function displayHikes() {
     const cardContainter = document.querySelector('.card-container')
@@ -36,6 +38,8 @@ function userOptions (e) {
         newUser()
     }
 }
+
+
 
 function newUser() {
     const logIn = document.querySelector('.log-in')

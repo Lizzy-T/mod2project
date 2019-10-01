@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    render json: @user, include: :favorites
+    render json: @user, include: :reihikes
   end
 
   def create
