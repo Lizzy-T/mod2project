@@ -12,7 +12,7 @@ function displayHikes() {
         card.className = 'card'
         card.innerHTML = `
             <a href="${hike.link}">${hike.name}</a>
-            <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
             <img src="${hike.image}">
         `
         cardContainter.appendChild(card)
