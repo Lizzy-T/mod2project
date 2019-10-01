@@ -13,8 +13,10 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.create({
-      user: params[:user],
-      reihike: params[:reihike]
+      user_id: params[:user_id],
+      reihike_id: params[:reihike_id]
     })
+
+    redirect_to "http://localhost:3001"
   end
 end

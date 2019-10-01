@@ -13,8 +13,6 @@ fetch("http://localhost:3000/reihikes")
     .then(logIn)
     .then(starFavorite)
 
-fetch("http://localhost:3000/favorites")
-    .then(response => response.json())
 
 
 function displayHikes() {
@@ -23,8 +21,9 @@ function displayHikes() {
         let card = document.createElement('div')
         card.className = 'card'
         card.innerHTML = `
-            <h3>${hike.name}</h3>
+            <a href="${hike.link}">${hike.name}</a>
             <i class="fa fa-star"></i>
+            <img src="${hike.image}">
         `
         cardContainter.appendChild(card)
     })
@@ -111,17 +110,14 @@ function addToFavorites(e){
 }
 
 function createFavoritePost(user, hike){
-    console.log(user)
-    console.log(hike)
-    const postRequest = new XMLHttpRequest()
-    postRequest.addEventListener("load", reqListener)
-    postRequest.open("POST", "http://localhost:3000/favorites")
-    postRequest.send(JSON.stringify({
-        user: user,
-        reihike: hike
-    }))
-}
-
-function reqListener () {
-    console.log(this.responseText)
+    fetch("http://localhost:3000/favorites", {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify({
+            user_id: user[0]["id"],
+            reihike_id: hike[0]["id"]
+        }), // data can be `string` or {object}!
+        headers: {
+        'Content-Type': 'application/json'
+        }
+    })
 }
