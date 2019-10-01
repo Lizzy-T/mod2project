@@ -29,7 +29,9 @@ damon = User.create({
 flatiron = Reihike.create({
   name: 'Flatiron',
   length: 0.5,
-  location: 'Boulder, CO'
+  location: 'Boulder, CO',
+  link: 'dumb',
+  image: 'smart'
 })
 
 Favorite.create({
@@ -41,6 +43,8 @@ all_trails.each() do |trail|
   Reihike.create({
     name: trail["name"],
     length: trail["length"],
-    location: trail["location"]
+    location: trail["location"],
+    link: trail["url"],
+    image: trail["imgSmall"]
   })
 end
