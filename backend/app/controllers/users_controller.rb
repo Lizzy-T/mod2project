@@ -16,7 +16,6 @@ class UsersController < ApplicationController
       username: params[:username]
     })
 
-    redirect_to "http://localhost:3001"
+    render json: @user
   end
-
 end
