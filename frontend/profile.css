@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+body {
+    font-family: 'Raleway';
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); 
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-image: url("glacierHike.jpg"); 
+    background-repeat: no-repeat;
+    background-size: 100%, 10rem;
+    height: 10rem;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+}
+
+h1 {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    width: 90%;
+    margin: auto;
+}
+
+nav > a:link {
+    background-color: hsla(334, 65%, 81%, .8);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 14px 25px;
+    border-radius: 1rem;
+}
+
+nav > a:hover {
+    background-color: rgb(228, 189, 206);
+}
+
+.profile-container{
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem; 
+    margin: auto;
+    width: 90%;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: rgb(52, 68, 81);
+    color: rgb(216, 203, 176);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    height: 20rem;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

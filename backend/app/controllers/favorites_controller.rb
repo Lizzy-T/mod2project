@@ -2,13 +2,13 @@ class FavoritesController < ApplicationController
   def index
     @favorites = Favorite.all
 
-    render json: @favorites
+    render json: @favorites, include: :reihike
   end
 
   def show
     @favorite = Favorite.find(params[:id])
 
-    render json: @favorite
+    render json: @favorite, include: :reihike
   end
 
   def create
