@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_154817) do
+ActiveRecord::Schema.define(version: 2019_10_02_152630) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 2019_10_01_154817) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "link"
     t.string "image"
+    t.string "summary"
+    t.float "rating"
+    t.string "difficulty"
+    t.integer "highest_point"
+    t.integer "lowest_point"
   end
 
   create_table "users", force: :cascade do |t|

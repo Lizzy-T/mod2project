@@ -4,7 +4,7 @@ require 'pry'
 
 
 rei = ENV["REI_API_KEY"]
-rei_url = "https://www.hikingproject.com/data/get-trails?lat=39.7392&lon=-104.9903&maxDistance=100&maxResults=10&key=#{rei}"
+rei_url = "https://www.hikingproject.com/data/get-trails?lat=39.7392&lon=-104.9903&maxDistance=100&maxResults=25&key=#{rei}"
 info = RestClient.get(rei_url)
 all_trails = JSON.parse(info.body)["trails"]
 
@@ -26,6 +26,11 @@ all_trails.each() do |trail|
     length: trail["length"],
     location: trail["location"],
     link: trail["url"],
-    image: trail["imgSmall"]
+    image: trail["imgSmall"],
+    summary: trail["summary"],
+    rating: trail["stars"],
+    difficulty: trail["difficulty"],
+    highest_point: trail["high"],
+    lowest_point: trail["low"],
   })
 end
