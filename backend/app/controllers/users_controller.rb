@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
   def index
     @users = User.all
@@ -8,7 +9,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    render json: @user, include: :reihikes
+    render json: {
+      user: @user,
+      favorites: @user.favorites, 
+      hikes: @user.reihikes
+    }
   end
 
   def create
