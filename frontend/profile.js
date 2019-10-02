@@ -4,28 +4,34 @@ let query = searchParams.get("id")
 const body = document.querySelector('body')
 
 let allHikes = []
+let currentUser = ""
+let favorites = []
 
 fetch(`http://localhost:3000/users/${query}`)
     .then(response => response.json())
     .then(user => {
-        allHikes = user.reihikes
+        allHikes = user.hikes
+        currentUser = user.user 
+        favorites = user.favorites
         welcomeHeader(user)
         createCard()
+        console.log(currentUser)
+        console.log(allHikes)
+        console.log(favorites)
     })
 
-function welcomeHeader(user){
+function welcomeHeader(){
     const header = document.querySelector('header')
     header.innerHTML = `
-        <h1>${user.username}'s Trails</h1>
+        <h1>${currentUser.username}'s Trails</h1>
     `
     let aside = document.querySelector('aside')
-    aside.innerText = `Number of Favorites: ${user.reihikes.length}`
+    aside.innerText = `Number of Favorites: ${favorites.length}`
 }
 
 function createCard() {
   const profileContainter = document.querySelector('.profile-container')
   allHikes.forEach(hike => {
-      console.log(hike)
     let card = document.createElement('div')
     card.className = 'card'
     card.innerHTML = `
