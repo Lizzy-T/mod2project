@@ -4,10 +4,10 @@ let selectedUser = []
 let initialView = document.querySelector('input[value=returning]')
 initialView.focus()
 
-function displayHikes() {
+function displayHikes(hikeArray) {
     const cardContainter = document.querySelector('.card-container')
 
-    all_hikes.forEach(hike => {
+    hikeArray.forEach(hike => {
         let card = document.createElement('div')
         card.className = 'card'
         card.innerHTML = `
@@ -17,8 +17,37 @@ function displayHikes() {
         `
         cardContainter.appendChild(card)
     })
+    starFavorite()
 }
 
+function starFavorite() {
+    let all_stars = document.querySelectorAll('.card > i')
+
+    all_stars.forEach(star =>{
+        star.addEventListener("click", addToFavorites)
+    })
+}
+
+function addToFavorites(e){
+    let hikeName = e.currentTarget.parentElement.firstElementChild.innerText
+
+    currentHikeObj = all_hikes.filter(hike => hike.name === hikeName)
+
+    createFavoritePost(selectedUser, currentHikeObj)
+}
+
+function createFavoritePost(user, hike){
+    fetch("http://localhost:3000/favorites", {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify({
+            user_id: user[0]["id"],
+            reihike_id: hike[0]["id"]
+        }), // data can be `string` or {object}!
+        headers: {
+        'Content-Type': 'application/json'
+        }
+    })
+}
 
 function logIn() {
     let  userForm = document.querySelector('#user')
@@ -109,33 +138,21 @@ function selectUserName(e){
     displayCurrentUser()
 }
 
-function starFavorite() {
-    let all_stars = document.querySelectorAll('.card > i')
-
-    all_stars.forEach(star =>{
-        star.addEventListener("click", addToFavorites)
-    })
+function queryEvent (){
+    let queryElement = document.querySelector('#query > input')
+    queryElement.addEventListener("input", displayCardsByQuery)
 }
 
-function addToFavorites(e){
-    let hikeName = e.currentTarget.parentElement.firstElementChild.innerText
-
-    currentHikeObj = all_hikes.filter(hike => hike.name === hikeName)
-
-    createFavoritePost(selectedUser, currentHikeObj)
+function displayCardsByQuery(e){
+    let search = e.target.value
+    let filtered = all_hikes.filter(hike => hike.name.toLowerCase().includes(search.toLowerCase()))
+    deleteCards()
+    displayHikes(filtered)
 }
 
-function createFavoritePost(user, hike){
-    fetch("http://localhost:3000/favorites", {
-        method: 'POST', // or 'PUT'
-        body: JSON.stringify({
-            user_id: user[0]["id"],
-            reihike_id: hike[0]["id"]
-        }), // data can be `string` or {object}!
-        headers: {
-        'Content-Type': 'application/json'
-        }
-    })
+function deleteCards(){
+    let allCards = Array.from(document.querySelectorAll('.card-container > .card'))
+    allCards.forEach(card => card.remove())
 }
 
 fetch("http://localhost:3000/users")
@@ -147,4 +164,4 @@ fetch("http://localhost:3000/reihikes")
     .then(response => all_hikes = response)
     .then(displayHikes)
     .then(logIn)
-    .then(starFavorite)
+    .then(queryEvent)
