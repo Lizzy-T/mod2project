@@ -15,9 +15,7 @@ fetch(`http://localhost:3000/users/${query}`)
         favorites = user.favorites
         welcomeHeader(user)
         createCard()
-        console.log(currentUser)
-        console.log(allHikes)
-        console.log(favorites)
+        deletionEvent()
     })
 
 function welcomeHeader(){
@@ -38,6 +36,7 @@ function createCard() {
         <a href=${hike.link}>
             <h4>${hike.name}</h4>
         </a>
+        <i class="fa fa-star"></i>
         <img src="${hike.image}">
         <p>${hike.summary}</p>
         <ul>
@@ -48,5 +47,35 @@ function createCard() {
         </ul>
     `
     profileContainter.appendChild(card)
+    })
+}
+
+function deletionEvent() {
+    let all_buttons = document.querySelectorAll('.card > i')
+
+    all_buttons.forEach(button => {
+        button.addEventListener("click", destroyFavorite)
+    })
+}
+
+function destroyFavorite(e) {
+    let hikeName = e.currentTarget.parentElement.firstElementChild.innerText
+
+    currentHikeId = allHikes.filter(hike => hike.name === hikeName)[0]["id"]
+
+    deleteRequest(favoriteFinder(currentUser["id"], currentHikeId))
+    e.target.parentElement.remove()
+}
+
+function favoriteFinder(userId, hikeId) {
+    return favorites.filter(favorite => favorite["user_id"] === userId && favorite["reihike_id"] === hikeId)[0]["id"]
+}
+
+function deleteRequest(favorite_id) {
+    fetch(`http://localhost:3000/favorites/${favorite_id}`, {
+        method: 'DELETE',
+        headers: {
+        'Content-Type': 'application/json'
+        }
     })
 }

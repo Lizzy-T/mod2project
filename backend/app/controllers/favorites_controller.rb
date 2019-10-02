@@ -19,4 +19,11 @@ class FavoritesController < ApplicationController
 
     redirect_to "http://localhost:3001"
   end
+
+  def destroy
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
+
+    redirect_to `http://localhost:3001/profile.html?#{params[:user_id]}`
+  end
 end
