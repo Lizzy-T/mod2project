@@ -29,11 +29,16 @@ function createCard() {
     let card = document.createElement('div')
     card.className = 'card'
     card.innerHTML = `
-        <h4>${hike.name}</h4>
+        <a href=${hike.link}>
+            <h4>${hike.name}</h4>
+        </a>
         <img src="${hike.image}">
+        <p>${hike.summary}</p>
         <ul>
             <li>Length: ${hike.length} miles</li>
             <li>Location: ${hike.location}</li>
+            <li>Diffifculty: ${hike.difficulty}</li>
+            <li>Rating:  ${hike.rating}</li>
         </ul>
     `
     profileContainter.appendChild(card)
