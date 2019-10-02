@@ -6,6 +6,7 @@ const body = document.querySelector('body')
 let allHikes = []
 let currentUser = ""
 let favorites = []
+let numberFav = ''
 
 fetch(`http://localhost:3000/users/${query}`)
     .then(response => response.json())
@@ -13,6 +14,7 @@ fetch(`http://localhost:3000/users/${query}`)
         allHikes = user.hikes
         currentUser = user.user 
         favorites = user.favorites
+        numberFav = allHikes.length
         welcomeHeader(user)
         createCard()
         deletionEvent()
@@ -24,7 +26,7 @@ function welcomeHeader(){
         <h1>${currentUser.username}'s Trails</h1>
     `
     let aside = document.querySelector('aside')
-    aside.innerText = `Number of Favorites: ${favorites.length}`
+    aside.innerText = `Number of Favorites: ${numberFav}`
 }
 
 function createCard() {
@@ -36,7 +38,7 @@ function createCard() {
         <a href=${hike.link}>
             <h4>${hike.name}</h4>
         </a>
-        <i class="fa fa-star"></i>
+        <i class="fa fa-trash"> &nbsp Remove Hike From Favorites</i>
         <img src="${hike.image}">
         <p>${hike.summary}</p>
         <ul>
@@ -65,6 +67,10 @@ function destroyFavorite(e) {
 
     deleteRequest(favoriteFinder(currentUser["id"], currentHikeId))
     e.target.parentElement.remove()
+
+    numberFav = numberFav - 1
+    let aside = document.querySelector('aside')
+    aside.innerText = `Number of Favorites: ${numberFav}`
 }
 
 function favoriteFinder(userId, hikeId) {
