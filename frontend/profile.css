@@ -68,7 +68,7 @@ nav > a:hover {
     background: rgb(52, 68, 81);
     color: rgb(216, 203, 176);
     padding: 1rem 1rem;
-    height: 30rem;
+    height: auto;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -93,4 +93,20 @@ nav > a:hover {
 
 .card li {
     padding-bottom: 5px;
+}
+
+.card i {
+    align-self: right;
+    order: 1;
+    padding-bottom: 1rem;
+    color: hsl(145, 48%, 60%);
+    cursor: pointer;
+}
+
+.card i:hover {
+    color: hsl(125, 53%, 46%);
+}
+
+.card i:active {
+    color: rgb(255, 0, 0);
 }
