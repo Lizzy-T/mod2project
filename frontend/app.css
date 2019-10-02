@@ -1,4 +1,39 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 /* color palette:
 rgb(52, 68, 81)
 rgb(59, 65, 59)
@@ -10,8 +45,6 @@ body {
     font-family: 'Raleway';
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); 
-    border-radius: 1rem;
-
 }
 
 header {
@@ -21,7 +54,7 @@ header {
     background-repeat: no-repeat;
     background-size: 100%, 10rem;
     height: 10rem;
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
     border-radius: 1rem;
 }
 
@@ -34,7 +67,9 @@ h1 {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding-bottom: 1rem;
+    padding: 1rem;
+    background-color: hsl(270, 82%, 39%, .2);
+
 }
 
 form .old-user{
@@ -45,22 +80,41 @@ form .old-user{
     height: 5rem;
 }
 
+.log-in > section {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+section > h3{
+    padding: 1rem;
+}
+
+section > a {
+    margin: auto;
+    text-align: center;
+}
+
 section > a:link {
     background-color: hsla(334, 65%, 81%, .8);
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     padding: 14px 25px;
     border-radius: 1rem;
     color: rgb(98, 18, 179);
 }
 
 section > a:visited {
-    color: rgb(98, 18, 179);
+    color: hsl(270, 82%, 39%);
 }
 
 section > a:hover {
     color: rgb(191, 91, 216);
+}
+
+.filter {
+    margin: auto;
+    padding: 2rem 5%;
+    background-color: hsl(240, 62%, 39%, .2);
 }
 
 .card-container{
@@ -70,6 +124,7 @@ section > a:hover {
     grid-template-rows: auto;
     grid-column-gap: 1rem;
     grid-row-gap: 1rem; 
+    padding: 2rem ;
     margin: auto;
     width: 90%;
 }
@@ -113,3 +168,4 @@ section > a:hover {
 .card i:active {
     color: rgb(145, 189, 214);
 }
+
