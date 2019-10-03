@@ -12,12 +12,43 @@ function displayHikes(hikeArray) {
         card.className = 'card'
         card.innerHTML = `
             <a href="${hike.link}">${hike.name}</a>
-                <i class="fa fa-star"></i>
+                <i class="fa fa-star fa-2x"></i>
             <img src="${hike.image}">
+            <span class="more">
+                <p>${hike.summary}</p>
+                <ul>
+                    <li>Length: &nbsp ${hike.length} miles</li>
+                    <li>Location: &nbsp ${hike.location}</li>
+                    <li>Diffifculty: &nbsp ${hike.difficulty}</li>
+                    <li>Rating: &nbsp  ${hike.rating}</li>
+                    <li>Elevation Change: &nbsp  ${hike.highest_point - hike.lowest_point}'</li>
+                </ul>
+            </span>
+            <button class="moreButton">Read About Me </button>
         `
         cardContainter.appendChild(card)
     })
     starFavorite()
+    showMoreEventListener()
+}
+
+function showMoreEventListener() {
+    let buttons = Array.from(document.getElementsByClassName('moreButton'))
+    buttons.forEach(button => button.addEventListener("click", showHikeInfo))
+}
+
+function showHikeInfo(e) {
+    let card= e.target.parentElement
+    let info = card.querySelector('.more')
+    let button = card.querySelector('.moreButton')
+
+    if (!info.style.display) {
+        button.innerText = "Read Less"
+        info.style.display = "block"
+    } else {
+        button.innerText = "Read About Me"
+        info.style.display = null
+    }
 }
 
 function starFavorite() {
@@ -144,6 +175,9 @@ function queryEvent (){
 }
 
 function displayCardsByQuery(e){
+    let difficultyLevels = Array.from(document.querySelectorAll('.difficulty-rating > li'))
+    difficultyLevels.forEach(level => level.className = '')
+    
     let search = e.target.value
     let filtered = all_hikes.filter(hike => hike.name.toLowerCase().includes(search.toLowerCase()))
     deleteCards()

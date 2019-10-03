@@ -1,5 +1,40 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
+body, ul {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
 body {
     font-family: 'Raleway';
     background: rgb(238,174,202);
@@ -13,8 +48,8 @@ header {
     background-repeat: no-repeat;
     background-size: 100%, 10rem;
     height: 10rem;
-    margin-bottom: 1rem;
-    border-radius: 1rem;
+    padding-bottom: 1rem;
+    background-color:  hsla(270, 82%, 39%, .2);
 }
 
 h1 {
@@ -25,27 +60,44 @@ h1 {
 nav {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 1rem;
-    width: 90%;
+    align-items: center;
+    padding: 1rem 5%;
     margin: auto;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    background-color:  hsla(270, 82%, 39%, .2);
+    margin-bottom: 2rem;
 }
 
 nav > a:link {
-    background-color: hsla(334, 65%, 81%, .8);
     text-align: center;
     text-decoration: none;
     display: inline-block;
     padding: 14px 25px;
     border-radius: 1rem;
-    color: rgb(98, 18, 179);
+    background-color:hsla(207, 22%, 26%, .3);
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: hsla(40, 34%, 77%, .5);
+    box-shadow: 1px 1px 5px black;
 }
 
 nav > a:visited {
-    color: rgb(98, 18, 179);
+    color: hsla(40, 34%, 77%, .5);
+    text-shadow: 2px 2px 4px #000000;
 }
 
 nav > a:hover {
-    background-color: rgb(228, 189, 206);
+    bborder-style:ridge;
+    border-color: white;
+    transition: .5s;
+    border-width: 2px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .6);
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    background-color:hsla(207, 22%, 26%, .3);
 }
 
 .profile-container{
@@ -80,19 +132,28 @@ nav > a:hover {
 }
 
 .card a:link, a:visited {
+    text-decoration: none;
     color: rgb(216, 203, 176);
+    text-shadow: 1px 2px 4px rgb(0, 0, 0);
+    font-size: 25px;
 }
 
 .card p {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 2px rgb(0, 0, 0);
 }
 
 .card ul {
+    margin: auto;
+    padding: 0;
     list-style-type: none;
+    text-align: center;
+    font-size: 16px;
+    text-shadow: 0 0 2px rgb(0, 0, 0);
 }
 
 .card li {
-    padding-bottom: 5px;
+    padding: 5px;
 }
 
 .card i {
@@ -110,3 +171,4 @@ nav > a:hover {
 .card i:active {
     color: rgb(255, 0, 0);
 }
+
