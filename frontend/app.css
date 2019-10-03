@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
 
-body {
+body, ul {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -55,7 +55,6 @@ header {
     background-size: 100%, 10rem;
     height: 10rem;
     padding-bottom: 1rem;
-    border-radius: 1rem;
 }
 
 h1 {
@@ -68,7 +67,9 @@ h1 {
     justify-content: space-evenly;
     align-items: center;
     padding: 1rem;
-    background-color: hsl(270, 82%, 39%, .2);
+    background-color: hsla(270, 82%, 39%, .2);
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
 
 }
 
@@ -98,6 +99,7 @@ section > a:link {
     background-color: hsla(334, 65%, 81%, .8);
     text-align: center;
     text-decoration: none;
+    text-shadow: 2px 2px 4px hsl(0, 0%, 100%);
     padding: 14px 25px;
     border-radius: 1rem;
     color: rgb(98, 18, 179);
@@ -105,17 +107,85 @@ section > a:link {
 
 section > a:visited {
     color: hsl(270, 82%, 39%);
+    text-shadow: 2px 2px 4px hsl(0, 0%, 100%);
+
 }
 
 section > a:hover {
-    color: rgb(191, 91, 216);
+    color: hsl(288, 62%, 60%);
+    text-shadow: 2px 2px 4px hsl(0, 0%, 100%);
+
 }
 
 .filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
     margin: auto;
-    padding: 2rem 5%;
-    background-color: hsl(240, 62%, 39%, .2);
+    padding: 1rem 5%;
+    background-color:hsla(207, 22%, 26%, .1);
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
 }
+
+#query > input {
+    margin-left: 5px;
+    width: 1rem;
+    padding: 10px 0;
+    padding-left: 44px;
+    background-color:  hsla(270, 82%, 39%, .08);
+    background-image: url('search-icon.png');
+    background-size: 30px;
+    background-position: 5px 3px;
+    background-repeat: no-repeat;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: hsla(40, 34%, 77%, .5);
+    border-radius: 5px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    font-size: 15px;
+}
+
+#query > input[type=text]:focus {
+    border-color: white;
+    color: white;
+    width: 20rem;
+    outline: none;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.difficulty-rating {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+
+}
+
+.difficulty-rating label {
+    margin: auto;
+    text-align: center;
+    padding-right: 5px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.difficulty-rating > li {
+    padding: 10px 20px;
+    margin:  5px;
+    background-color: hsla(270, 82%, 39%, .08);
+    border-style: ridge;
+    border-width: 3px;
+    border-color: hsla(40, 34%, 77%, .5);
+    border-radius: 5px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    cursor: pointer;
+}
+
+.active, .difficulty-rating > li:hover{
+    background-color: hsla(207, 22%, 26%, .8);
+}
+
 
 .card-container{
     display: grid;
@@ -135,7 +205,7 @@ section > a:hover {
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
-    background: rgb(52, 68, 81);
+    background: hsla(207, 22%, 26%, .8);
     color: rgb(216, 203, 176);
     padding: 1rem 1rem;
     height: 20rem;
@@ -145,12 +215,20 @@ section > a:hover {
 
 .card img {
     width: 100%;
-    height: 150px;
-    padding-top: 1rem;
+    height: 50%;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
 }
 
 .card a:link, a:visited {
     color: rgb(216, 203, 176);
+    text-decoration: none;
+    text-shadow: 0 0 3px rgb(0, 0, 0);
+}
+
+.card a:hover {
+    color: white;
+    transition: .5s;
 }
 
 .card i {
@@ -161,11 +239,13 @@ section > a:hover {
     cursor: pointer;
 }
 
+
 .card i:hover {
-    color: hsl(57, 100%, 37%, 1)
+    color: hsl(216, 83%, 81%);
+    transition: 0.5s; 
 }
 
 .card i:active {
-    color: rgb(145, 189, 214);
+    color: rgb(255, 0, 43);
 }
 
