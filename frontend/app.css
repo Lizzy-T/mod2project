@@ -182,10 +182,13 @@ section > a:hover {
     cursor: pointer;
 }
 
-.active, .difficulty-rating > li:hover{
+.difficulty-rating > li:hover{
     background-color: hsla(207, 22%, 26%, .8);
 }
 
+li.active {
+    background-color: hsla(207, 22%, 26%, .8);
+}
 
 .card-container{
     display: grid;
