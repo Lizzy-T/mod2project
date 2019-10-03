@@ -42,10 +42,10 @@ function createCard() {
         <img src="${hike.image}">
         <p>${hike.summary}</p>
         <ul>
-            <li>Length: ${hike.length} miles</li>
-            <li>Location: ${hike.location}</li>
-            <li>Diffifculty: ${hike.difficulty}</li>
-            <li>Rating:  ${hike.rating}</li>
+            <li>Length: &nbsp ${hike.length} miles</li>
+            <li>Location: &nbsp ${hike.location}</li>
+            <li>Diffifculty: &nbsp ${hike.difficulty}</li>
+            <li>Rating: &nbsp  ${hike.rating}</li>
         </ul>
     `
     profileContainter.appendChild(card)

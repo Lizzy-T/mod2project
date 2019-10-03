@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
+
 
 body, ul {
 	margin: 0;
@@ -55,11 +57,12 @@ header {
     background-size: 100%, 10rem;
     height: 10rem;
     padding-bottom: 1rem;
+    background-color: hsla(270, 82%, 39%, .2)
 }
 
 h1 {
     color: white;
-    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+    text-shadow: .5px .5px 2px black, 0 0 25px rgb(149, 188, 233), 0 0 5px rgba(51, 67, 80, 0.856);
 }
 
 .log-in {
@@ -70,7 +73,49 @@ h1 {
     background-color: hsla(270, 82%, 39%, .2);
     color: white;
     text-shadow: 2px 2px 4px #000000;
+}
 
+#user > input[type='radio'] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+#user label {
+    display: inline-block;
+    text-align: center;
+    background-color:hsla(207, 22%, 26%, .3);
+    border: 2px ridge hsla(40, 34%, 77%, .5);
+    width: 10rem;
+    border-radius: 5px;
+    padding: 5px 5px;
+    margin: 4px;
+}
+
+#user label:hover, #username:hover{
+    border-color: white;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px black;
+}
+
+#username {
+    width: 70%;
+    background: hsla(207, 22%, 26%, .3);
+    border: 2px ridge hsla(40, 34%, 77%, .5);
+    font-size: 1rem;
+    color: white;
+    font-family: 'Raleway';
+    text-shadow: 2px 2px 4px #000000;
+    margin-top: 7px;
+    padding-left: 1rem;
+}
+
+#username::placeholder{
+    color: hsla(40, 34%, 77%, .9);
+}
+
+.log-in div label{
+    margin: 5px;
 }
 
 form .old-user{
@@ -96,25 +141,36 @@ section > a {
 }
 
 section > a:link {
-    background-color: hsla(334, 65%, 81%, .8);
-    text-align: center;
+    font-size: 20px;
+    font-style: italic;
     text-decoration: none;
-    text-shadow: 2px 2px 4px hsl(0, 0%, 100%);
     padding: 14px 25px;
     border-radius: 1rem;
-    color: rgb(98, 18, 179);
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color:hsla(207, 22%, 26%, .3);
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: hsla(40, 34%, 77%, .5);
+    box-shadow: 1px 1px 5px black;
 }
 
 section > a:visited {
-    color: hsl(270, 82%, 39%);
-    text-shadow: 2px 2px 4px hsl(0, 0%, 100%);
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
 
 }
 
 section > a:hover {
-    color: hsl(288, 62%, 60%);
-    text-shadow: 2px 2px 4px hsl(0, 0%, 100%);
-
+    border-style:ridge;
+    border-color: white;
+    transition: .5s;
+    border-width: 2px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .6);
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    background-color:hsla(207, 22%, 26%, .3);
 }
 
 .filter {
@@ -148,12 +204,20 @@ section > a:hover {
     font-size: 15px;
 }
 
+#query input:hover{
+    background-color: hsla(207, 22%, 26%, .5);
+    border-color: white;
+    transition: .5s;
+}
+
 #query > input[type=text]:focus {
     border-color: white;
     color: white;
     width: 20rem;
     outline: none;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    background-color: rgba(51, 67, 80, 0.356);
+
 }
 
 .difficulty-rating {
@@ -183,11 +247,14 @@ section > a:hover {
 }
 
 .difficulty-rating > li:hover{
-    background-color: hsla(207, 22%, 26%, .8);
+    background-color: hsla(207, 22%, 26%, .5);
+    border-color: white;
+    transition: .5s;
 }
 
 li.active {
-    background-color: hsla(207, 22%, 26%, .8);
+    background-color: hsla(207, 22%, 26%, .5);
+    border-color: white;
 }
 
 .card-container{
@@ -208,17 +275,27 @@ li.active {
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
+    height: auto;
     background: hsla(207, 22%, 26%, .8);
     color: rgb(216, 203, 176);
     padding: 1rem 1rem;
-    height: 20rem;
     border-radius: 1rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.card:hover {
+    border-style:ridge;
+    border-color: white;
+    transition: .2s;
+    border-width: 2px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    
+}
+
+
 .card img {
     width: 100%;
-    height: 50%;
+    height: 150px;
     margin-top: 2rem;
     box-shadow: 0 4px 8px 0 grey, 0 6px 20px 0 grey;
 }
@@ -226,7 +303,8 @@ li.active {
 .card a:link, a:visited {
     color: rgb(216, 203, 176);
     text-decoration: none;
-    text-shadow: 0 0 3px rgb(0, 0, 0);
+    text-shadow: 1px 2px 4px rgb(0, 0, 0);
+    font-size: 25px;
 }
 
 .card a:hover {
@@ -245,10 +323,53 @@ li.active {
 
 .card i:hover {
     color: hsl(216, 83%, 81%);
-    transition: 0.5s; 
+    transition: 0.05s; 
 }
 
 .card i:active {
-    color: rgb(255, 0, 43);
+    color: hsla(57, 100%, 50%, 1);
+    z-index: 1;
+    transform: scale(1.5);
+    transition: .05s;
 }
 
+.more {
+    display: none;
+    font-size: 16px;
+    text-shadow: 0 0 2px rgb(0, 0, 0);
+}
+
+.more ul{
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+.more li{
+    padding: 5px;
+}
+
+.moreButton {
+    margin: 1rem auto;
+    background-color: hsla(196, 42%, 88%, .7);
+    border: none; 
+    border-radius: 5px;
+    color: hsl(198, 100%, 5%);
+    text-decoration: none;
+    font-size: 12px;
+    font-family: 'Raleway';
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.moreButton:hover {
+    color: hsl(200, 25%, 74%);
+    background-color: hsl(198, 100%, 5%);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.moreButton:active {
+    border-color: white;
+    color: white;
+    outline: none;
+}
