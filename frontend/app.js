@@ -155,6 +155,24 @@ function deleteCards(){
     allCards.forEach(card => card.remove())
 }
 
+function showTrailCardByDifficulty () {
+    let difficultyLevels = Array.from(document.querySelectorAll('.difficulty-rating > li'))
+    difficultyLevels.forEach(level =>{
+        level.addEventListener('click', filterByDifficulty)
+    })
+}
+
+function filterByDifficulty(e) {
+    let difficultyLevels = Array.from(document.querySelectorAll('.difficulty-rating > li'))
+    difficultyLevels.forEach(level => level.className = '')
+    e.target.className = 'active'
+    let colorRating = e.target.innerText.toLowerCase()
+    let filteredHikes = all_hikes.filter(hike => hike.difficulty.toLowerCase() == colorRating)
+    deleteCards()
+    displayHikes(filteredHikes)
+}
+
+
 fetch("http://localhost:3000/users")
     .then(response => response.json())
     .then(response => all_users = response)
@@ -165,3 +183,4 @@ fetch("http://localhost:3000/reihikes")
     .then(displayHikes)
     .then(logIn)
     .then(queryEvent)
+    .then(showTrailCardByDifficulty)
