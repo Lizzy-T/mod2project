@@ -208,6 +208,7 @@ section > a:hover {
     background-color: hsla(207, 22%, 26%, .5);
     border-color: white;
     transition: .5s;
+    transform: scale(1.05);
 }
 
 #query > input[type=text]:focus {
@@ -250,6 +251,7 @@ section > a:hover {
     background-color: hsla(207, 22%, 26%, .5);
     border-color: white;
     transition: .5s;
+    transform: scale(1.05);
 }
 
 li.active {
@@ -289,7 +291,7 @@ li.active {
     transition: .2s;
     border-width: 2px;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
-    
+    transform: scale(1.05);
 }
 
 
@@ -305,6 +307,10 @@ li.active {
     text-decoration: none;
     text-shadow: 1px 2px 4px rgb(0, 0, 0);
     font-size: 25px;
+}
+
+.card a:link:hover {
+    transform: scale(1.02);
 }
 
 .card a:hover {
@@ -323,7 +329,8 @@ li.active {
 
 .card i:hover {
     color: hsl(216, 83%, 81%);
-    transition: 0.05s; 
+    transition: 0.05s;
+    transform: scale(1.05);
 }
 
 .card i:active {
@@ -366,6 +373,7 @@ li.active {
     background-color: hsl(198, 100%, 5%);
     transition: .3s;
     cursor: pointer;
+    transform: scale(1.05);
 }
 
 .moreButton:active {

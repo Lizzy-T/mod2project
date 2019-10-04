@@ -138,6 +138,12 @@ nav > a:hover {
     font-size: 25px;
 }
 
+.card a:hover {
+    color: white;
+    transition: .5s;
+    transform: scale(1.02);
+}
+
 .card p {
     margin-bottom: 8px;
     text-shadow: 0 0 2px rgb(0, 0, 0);
@@ -159,13 +165,14 @@ nav > a:hover {
 .card i {
     align-self: right;
     order: 1;
-    padding-bottom: 1rem;
+    padding: 1rem;
     color: hsl(145, 48%, 60%);
     cursor: pointer;
 }
 
 .card i:hover {
     color: hsl(125, 53%, 46%);
+    transform: scale(1.03);
 }
 
 .card i:active {
