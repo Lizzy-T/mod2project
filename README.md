@@ -21,5 +21,7 @@ We accessed an API through REI Hiking Project with an REI member  specific key. 
 <li>Open a new terminal tab and cd into frontend. Run the command "lite-server" </li>
 </ol>
 <p>You should now have a new browser window at our home page! Enjoy using trails!</p>
+<br>
+<br>
 
 <footer>Contributors: Daemon Self & Lizzy Tong</footer>
