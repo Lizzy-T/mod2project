@@ -4,7 +4,7 @@ require 'pry'
 
 
 rei = ENV["REI_API_KEY"]
-rei_url = "https://www.hikingproject.com/data/get-trails?lat=39.7392&lon=-104.9903&maxDistance=100&maxResults=25&key=#{rei}"
+rei_url = "https://www.hikingproject.com/data/get-trails?lat=39.7392&lon=-104.9903&maxDistance=100&maxResults=100&key=#{rei}"
 info = RestClient.get(rei_url)
 all_trails = JSON.parse(info.body)["trails"]
 
